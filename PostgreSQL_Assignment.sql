@@ -1,3 +1,5 @@
+
+--  Create a "books" table
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(200) NOT NULL,
@@ -7,6 +9,7 @@ CREATE TABLE books (
     published_year INT NOT NULL
 );
 
+--  Create a "customers" table
 CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
@@ -14,6 +17,7 @@ CREATE TABLE customers (
     joined_date DATE DEFAULT CURRENT_DATE NOT NULL
 );
 
+--  Create an "orders" table
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES customers(id) ON DELETE CASCADE,
@@ -22,6 +26,7 @@ CREATE TABLE orders (
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+--  Insert sample data into the "books" table
 INSERT INTO books (id, title, author, price, stock, published_year) VALUES
 (1, 'Eloquent JavaScript', 'Marijn Haverbeke', 28.00, 9, 2018),
 (2, 'The Pragmatic Programmer', 'Andrew Hunt', 40.00, 10, 1999),
@@ -29,6 +34,7 @@ INSERT INTO books (id, title, author, price, stock, published_year) VALUES
 (4, 'Refactoring', 'Martin Fowler', 50.00, 3, 1999),
 (5, 'Design Patterns', 'Erich Gamma', 45.00, 7, 1994);
 
+-- Insert sample data into the "customers" table
 INSERT INTO customers (id, name, email, joined_date) VALUES
 (1, 'Rakib', 'rekib@email.com', '2022-09-05'),
 (2, 'Kiron', 'kiron@email.com', '2024-01-02'),
@@ -36,12 +42,16 @@ INSERT INTO customers (id, name, email, joined_date) VALUES
 (4, 'Rafi', 'rafi@email.com', '2022-07-30'),
 (5, 'Naim', 'naim@email.com', '2023-08-21');
 
+-- Insert sample data into the "orders" table
 INSERT INTO orders (id, customer_id, book_id, quantity, order_date) VALUES
 (1, 1, 2, 1, '2024-03-10'),
 (2, 2, 1, 1, '2024-02-20'),
 (3, 1, 3, 2, '2024-03-05'),
 (4, 3, 5, 1, '2024-02-15'),
 (5, 4, 4, 2, '2024-03-08');
+
+
+-- PostgreSQL Problems & Sample Outputs --
 
 -- 01. Find books that are out of stock.
 SELECT title FROM books WHERE stock = 0;

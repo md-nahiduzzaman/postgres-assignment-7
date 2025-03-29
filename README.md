@@ -30,10 +30,10 @@ SELECT * FROM students WHERE age > 25;
   উদাহরণ:
 
 ```sql
-SELECT * FROM students LIMIT 7 OFFSET 11;
+SELECT * FROM students LIMIT 5 OFFSET 10;
 ```
 
-এটি ১২তম রেকর্ড থেকে ৭টি রেকর্ড দেখাবে।
+এটি ১১তম রেকর্ড থেকে ৫টি রেকর্ড দেখাবে।
 
 **7. UPDATE স্টেটমেন্ট দিয়ে কীভাবে ডাটা পরিবর্তন করা যায়?**  
 UPDATE কমান্ড ব্যবহার করে বিদ্যমান ডাটার মান পরিবর্তন করা যায়।  
